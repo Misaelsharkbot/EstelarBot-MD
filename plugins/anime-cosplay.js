@@ -1,6 +1,6 @@
 let handler = async (m, { conn }) => {
 let hyzer = 'https://api.zacros.my.id/randomimg/cosplay'
-    conn.sendButtonImg(m.chat, hyzer, teksfoto, wm2, 'NEXT', '.cosplay', m)
+    conn.sendButtonImg(m.chat, hyzer, teksfoto, wm2, 'Siguiente ➡', '.cosplay', m)
 }
 handler.help = ['cosplay']
 handler.tags = ['anime']
