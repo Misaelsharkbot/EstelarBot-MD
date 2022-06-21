@@ -2,14 +2,14 @@ const { createHash } = require('crypto')
 let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 let handler = async function (m, { text, usedPrefix }) {
   let user = global.db.data.users[m.sender]
-  if (user.registered === true) throw `Anda sudah terdaftar\nMau daftar ulang? ${usedPrefix}unreg <SN|SERIAL NUMBER>`
-  if (!Reg.test(text)) throw `Format salah\n*${usedPrefix}daftar nama.umur*`
+  if (user.registered === true) throw `Ya estás registrado \n¿Quieres volver a registrarte? ${usedPrefix}unreg <SN|Numero de serie>`
+  if (!Reg.test(text)) throw `Formato erróneo\n*${usedPrefix}reg nombre.edad*`
   let [_, name, splitter, age] = text.match(Reg)
-  if (!name) throw 'Nama tidak boleh kosong (Alphanumeric)'
-  if (!age) throw 'Umur tidak boleh kosong (Angka)'
+  if (!name) throw 'El nombre no puede estar vacío (apodo)'
+  if (!age) throw 'La edad no puede estar vacía (Número)'
   age = parseInt(age)
-  if (age > 120) throw 'Umur terlalu tua 😂'
-  if (age < 5) throw 'Bayi bisa ngetik sesuai format bjir ._.'
+  if (age > 120) throw 'Estas muy viejo 😂'
+  if (age < 5) throw 'Los bebes pueden escribir ._.'
   user.name = name.trim()
   user.age = age
   user.regTime = + new Date
@@ -19,16 +19,16 @@ let handler = async function (m, { text, usedPrefix }) {
 Daftar berhasil!
 
 ╭─「 Info 」
-│ Nama: ${name}
-│ Umur: ${age} tahun 
+│ Nombre: ${name}
+│ Edad: ${age} años 
 ╰────
-Serial Number: 
+Numero de Serie: 
 ${sn}
 `.trim())
 }
-handler.help = ['daftar', 'reg', 'register'].map(v => v + ' <nama>.<umur>')
+handler.help = ['reg', 'register'].map(v => v + ' <nombre>.<edad>')
 handler.tags = ['xp']
 
-handler.command = /^(daftar|reg(ister)?)$/i
+handler.command = /^(rg|reg(ister)?)$/i
 
 module.exports = handler
