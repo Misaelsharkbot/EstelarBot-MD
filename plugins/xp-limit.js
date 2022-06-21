@@ -13,7 +13,7 @@ let handler = async (m) => {
                             }
                           }
                         }
-conn.sendBut(m.chat, `${global.db.data.users[who].limit} Limit Tersisaಥ_ಥ`, wm, 'BELI', '.buy', fdoc)
+conn.sendBut(m.chat, `${global.db.data.users[who].limit} Limit restantes ಥ_ಥ`, wm, '𝐂𝐎𝐌𝐏𝐑𝐀𝐑', '.buy', fdoc)
 }
 handler.help = ['limit [@user]']
 handler.tags = ['xp']
